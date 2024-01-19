@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+        
+        <meta charset="utf-8" />
+        <title>Data Tables | Skote - Admin & Dashboard Template</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <!-- App favicon -->
+        
+
+        <!-- DataTables -->
+        <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Responsive datatable examples -->
+        <link href="assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />     
+
+        <!-- Bootstrap Css -->
+        <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+        
+        <style>
+            body {
+                margin: 0;
+                overflow: hidden;
+            }
+    
+            .main-content {
+                padding: 0;
+                margin: 0;
+                height: 100vh;
+            }
+    
+            .page-content {
+                height: 100%;
+                padding: 20px;
+                overflow: auto;
+            }
+    
+            .container-fluid {
+                height: 100%;
+            }
+
+            body {
+        margin: 0;
+        overflow: hidden;
+        font-family: 'Roboto', sans-serif;
+        background-color: #f8f9fa; /* Background color for the body */
+    }
+
+    .navbar {
+        background-color: #0b7ccd;
+        padding: 15px;
+        color: #ffffff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+        z-index: 1000;
+        position: fixed;
+        width: 100%;
+    }
+
+    .navbar h4 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .dashboard-sidebar {
+        background-color: #4185c9;
+        color: #ffffff;
+        width: 250px;
+        position: fixed;
+        top: 0;
+        left: -250px;
+        bottom: 0;
+        overflow-y: auto;
+        padding-top: 60px;
+        transition: 0.3s;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    }
+
+    .dashboard-content {
+        margin-left: 0;
+        transition: 0.3s;
+        margin-left: 250px;
+        padding: 20px; /* Adjusted for better content spacing */
+    }
+
+    .dashboard-sidebar a {
+        padding: 15px;
+        text-decoration: none;
+        font-size: 18px;
+        color: #ffffff;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .dashboard-sidebar a:hover {
+        background-color: #352faf; /* Darker background on hover */
+    }
+
+    .toggle-btn {
+        font-size: 22px;
+        cursor: pointer;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        color: #ffffff;
+        z-index: 2;
+        transition: 0.3s;
+    }
+
+    .toggle-btn:hover {
+        color: #bbb;
+    }
+
+    body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(8, 66, 255, 0.1);
+            background-color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #238ef8;
+            color: #ffffff;
+            border-radius: 0;
+        }
+
+        tbody tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #888888;
+        }
+
+        td {
+            border-color: #e0e0e0;
+        }
+
+        /* Hide first row in the second table */
+        table:nth-child(2) tbody tr:first-child {
+            display: none;
+        }
+
+        /* Hide the second column in the third table */
+        table:nth-child(3) th:nth-child(2),
+        table:nth-child(3) td:nth-child(2) {
+            display: none;
+        }
+
+        /* Hide the third row in the third table */
+        table:nth-child(3) tbody tr:nth-child(3) {
+            display: none;
+        }
+
+        .split-bar {
+            display: flex;
+            height: 40px;
+        }
+
+        .split-bar-left {
+            flex: 1;
+            background-color: #dee2e6; /* Left side color - Grey */
+            padding: 10px;
+            border-bottom: 1px solid #cfd8dc;
+        }
+
+        .split-bar-right {
+            flex: 1;
+            background-color: #007bff; /* Right side color - Blue */
+            padding: 10px;
+            border-bottom: 1px solid #cfd8dc;
+            text-align: right;
+            color: #ffffff; /* White text for the right side */
+        }
+
+        .search-bar {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffffff; /* White background for the search bar */
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(169, 0, 241, 0.1);
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(43, 129, 186, 0.832);
+            background-color: #3b94e884; 
+        }
+
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0064e7; 
+            color: #ffffff; 
+            border-radius: 0;
+        }
+
+        tbody tr:hover {
+            background-color: #f0f0f0; 
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9; 
+        }
+
+        td {
+            border-color: #e0e0e0;
+        }
+        </style>
+
+
+    </head>
+
+    <body data-sidebar="dark">
+        <!-- Navbar -->
+        <div class="navbar">
+            <span class="toggle-btn" onclick="toggleSidebar()">&#9776;</span>
+            ...
+            
+        </div>
+    
+        <!-- Sidebar/Dashboard -->
+        <div class="dashboard-sidebar" id="sidebar">
+            <a href="#">Dashboard</a>
+            <a href="#">Charts</a>
+            <a href="#">Tables</a>
+            
+            <span class="toggle-btn" onclick="toggleSidebar()">Close &#10005;</span>
+        </div>
+    
+        <!-- Main Content -->
+        <div class="dashboard-content" id="content">
+            <div class="main-content">
+                <div class="page-content">
+                    <div class="container-fluid">
+
+   
+    <body data-sidebar="dark" class="full-screen">
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="mb-sm-0 font-size-18">Campaigns</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                          
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Campaigns Table</h4>
+                                    <p class="card-title-desc"></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Campaign Name</th>
+            <th>Campaign From</th>
+            <th>Campaign To</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Campaign 1</td>
+            <td>2023-01-01</td>
+            <td>2023-01-31</td>
+        </tr>
+        <!-- Add more rows as needed -->
+    </tbody>
+</table>
+<table>
+    <thead>
+        <tr>
+            <th>Campaign Stats</th>
+            <th>Participant Count</th>
+            <th>Clint name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><button class="btn btn-success">Active</button></td>
+            <td>0</td>
+            <td>ADORE</td>
+        </tr>
+        <!-- Add more rows as needed -->
+    </tbody>
+</table>
+<table>
+    <thead>
+        <tr>
+            <th>Created By</th>
+            <th>Code</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Dinesh Agarwal</td>
+            <td>T15YVW20C</td>
+            <td>
+                <button class="btn btn-info">ViewCamping</button>
+                <button class="btn btn-warning">Copy-Link</button>
+            </td>
+        </tr>
+        <!-- Add more rows as needed -->
+    </tbody>
+</table>
+
+<body data-sidebar="dark" class="full-screen">
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+
+                <!-- Split Bar -->
+                <div class="split-bar">
+                    <div class="split-bar-left">Questions</div>
+                    <div class="split-bar-right">Participants</div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                </div>
+
+                <!-- Table -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>EMAIL</th>
+                            <th>PHONE</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Add table rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+
+                   
+
+        <!-- Right Sidebar -->
+        <div class="right-bar">
+            <div data-simplebar class="h-100">
+                <div class="rightbar-title d-flex align-items-center px-3 py-4">
+            
+                    <h5 class="m-0 me-2">Settings</h5>
+
+                    <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+                        <i class="mdi mdi-close noti-icon"></i>
+                    </a>
+                </div>
+
+                <!-- Settings -->
+                <hr class="mt-0" />
+                <h6 class="text-center mb-0">Choose Layouts</h6>
+
+                <div class="p-4">
+                    <div class="mb-2">
+                        <img src="assets/images/layouts/layout-1.jpg" class="img-fluid img-thumbnail" alt="">
+                    </div>
+
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input theme-choice" type="checkbox" id="light-mode-switch" checked>
+                        <label class="form-check-label" for="light-mode-switch">Light Mode</label>
+                    </div>
+    
+                    <div class="mb-2">
+                        <img src="assets/images/layouts/layout-2.jpg" class="img-fluid img-thumbnail" alt="">
+                    </div>
+                    <div class="form-check form-switch mb-3">
+                        <input class="form-check-input theme-choice" type="checkbox" id="dark-mode-switch" data-bsStyle="assets/css/bootstrap-dark.min.css" data-appStyle="assets/css/app-dark.min.css">
+                        <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
+                    </div>
+    
+                    <div class="mb-2">
+                        <img src="assets/images/layouts/layout-3.jpg" class="img-fluid img-thumbnail" alt="">
+                    </div>
+                    <div class="form-check form-switch mb-5">
+                        <input class="form-check-input theme-choice" type="checkbox" id="rtl-mode-switch" data-appStyle="assets/css/app-rtl.min.css">
+                        <label class="form-check-label" for="rtl-mode-switch">RTL Mode</label>
+                    </div>
+
+            
+                </div>
+
+            </div> 
+        </div>
+       
+        <div class="rightbar-overlay"></div>
+   
+
+        <!-- JAVASCRIPT -->
+        <script src="assets/libs/jquery/jquery.min.js"></script>
+        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="assets/libs/node-waves/waves.min.js"></script>
+
+        <!-- Required datatable js -->
+        <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <!-- Buttons examples -->
+        <script src="assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+        <script src="assets/libs/jszip/jszip.min.js"></script>
+        <script src="assets/libs/pdfmake/build/pdfmake.min.js"></script>
+        <script src="assets/libs/pdfmake/build/vfs_fonts.js"></script>
+        <script src="assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+        <script src="assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+        <script src="assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+        
+        <!-- Responsive examples -->
+        <script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+        <!-- Datatable init js -->
+        <script src="assets/js/pages/datatables.init.js"></script>    
+
+        <script src="assets/js/app.js"></script>
+
+        <!-- Add your existing script tags here -->
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- DataTable initialization script -->
+    <script>
+        $(document).ready(function () {
+            var table = $('#datatable').DataTable();
+
+            // Add event listener for search input
+            $('#search').on('keyup', function () {
+                table.search(this.value).draw();
+            });
+
+            // Add event listener for search button
+            $('#searchButton').on('click', function () {
+                table.search($('#search').val()).draw();
+            });
+        });
+
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            var content = document.getElementById("content");
+
+            if (sidebar.style.left === "0px") {
+                sidebar.style.left = "-250px";
+                content.style.marginLeft = "0";
+            } else {
+                sidebar.style.left = "0px";
+                content.style.marginLeft = "250px";
+            }
+        }
+
+    </script>
+    </style>
+
+    </body>
+
+<!-- Mirrored from themesbrand.com/skote-django/layouts/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 18 Apr 2021 19:48:40 GMT -->
+</html>
